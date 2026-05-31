@@ -14,8 +14,7 @@ import Link from "next/link"
 
 const navLinks = [
   { href: "/", label: "홈" },
-  { href: "/about", label: "소개" },
-  { href: "/dashboard", label: "대시보드" },
+  { href: "/category/all", label: "카테고리" },
 ]
 
 /** 다크모드 토글 버튼 */

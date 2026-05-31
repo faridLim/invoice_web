@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { Container } from "@/components/layout/container"
 
 /** 모든 페이지 하단에 공통으로 표시되는 푸터 */
@@ -10,21 +9,8 @@ export function Footer() {
       <Container>
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Starter Kit. All rights reserved.
+            © {currentYear} Dev Blog. Notion으로 작성하고 자동으로 발행되는 개인 기술 블로그입니다.
           </p>
-          <nav className="flex gap-4 text-sm text-muted-foreground">
-            <a
-              href="https://github.com/faridLim/claude-nextjs-starterkit"
-              target="_blank"
-              rel="noreferrer"
-              className="transition-colors hover:text-foreground"
-            >
-              GitHub
-            </a>
-            {/* TODO: 문서 URL로 교체하세요 */}
-            <a href="#" className="transition-colors hover:text-foreground">문서</a>
-            <Link href="/about" className="transition-colors hover:text-foreground">문의</Link>
-          </nav>
         </div>
       </Container>
     </footer>

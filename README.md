@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dev Blog
 
-## Getting Started
+Notion을 CMS로 활용하여 글 작성 즉시 블로그에 자동 반영되는 개인 기술 블로그입니다.
 
-First, run the development server:
+## 프로젝트 개요
+
+**목적**: Notion API로 글 작성 즉시 블로그에 자동 반영
+**사용자**: Notion으로 기술 글을 작성하고 별도 배포 없이 블로그를 운영하려는 개인 개발자
+
+## 주요 페이지
+
+1. **홈 (`/`)** — 발행된 글 목록 (최신순), 카테고리 탭 필터, 키워드 검색
+2. **글 상세 (`/posts/[slug]`)** — Notion 블록 렌더링, 제목/카테고리/태그/발행일 표시
+3. **카테고리 (`/category/[name]`)** — 해당 카테고리 글 목록
+
+## 핵심 기능
+
+- Notion API에서 발행 상태 글만 필터링하여 목록 표시
+- 카테고리 탭 UI 필터링
+- 제목/태그 키워드 검색
+- Notion 페이지 블록을 Markdown으로 변환하여 렌더링
+- ISR 캐싱으로 Notion API 요청 최소화
+
+## 기술 스택
+
+- **Framework**: Next.js 16 (App Router)
+- **Runtime**: React 19
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **UI Components**: shadcn/ui (radix-nova style)
+- **Icons**: Lucide React
+- **Notion 연동**: @notionhq/client, notion-to-md
+- **Markdown 렌더링**: react-markdown, rehype-highlight
+
+## 시작하기
+
+### 1. 의존성 설치
+
+```bash
+npm install
+```
+
+### 2. 환경변수 설정
+
+```bash
+cp .env.local.example .env.local
+```
+
+`.env.local` 파일을 열고 Notion Integration 토큰과 데이터베이스 ID를 입력합니다:
+
+```
+NOTION_TOKEN=your_notion_integration_token
+NOTION_DATABASE_ID=your_notion_database_id
+```
+
+### 3. 개발 서버 실행
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000 에서 확인합니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. 빌드
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## 개발 상태
 
-To learn more about Next.js, take a look at the following resources:
+- 기본 프로젝트 구조 설정 완료
+- Notion 패키지 설치 완료
+- 라우트 구조 생성 완료 (`/`, `/posts/[slug]`, `/category/[name]`)
+- Notion API 연동 구현 예정
+- 홈 페이지 글 목록/검색/필터 UI 구현 예정
+- 글 상세 페이지 Notion 블록 렌더링 구현 예정
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 문서
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [PRD 문서](./docs/PRD.md) — 상세 요구사항
+- [개발 가이드](./CLAUDE.md) — 개발 지침
